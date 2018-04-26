@@ -1,2 +1,5 @@
 *.pyc
 __pycache__
+GeoLite2-City.mmdb
+GeoLite2-Country.mmdb
+
