@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}
+Mikael Dubik, Software Engineer
+{% endblock %}
+
+{% block style %}
+
+div#container {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+div#content {
+    padding-top: 40px;
+}
+
+p#a {
+    margin-top: 20px;
+}
+
+p#b {
+    padding-top: 10px;
+}
+
+p#c {
+    padding-top: 20px;
+}
+
+img {
+    float: left;
+    padding-right: 40px;
+    padding-bottom: 40px;
+}
+
+div#footer {
+    text-align:center;
+    margin-top: 120px;
+    float: center;
+}
+
+div#footer a {
+    margin-right: 80px;
+}
+
+{% endblock %}
+{% block body %}
+<div id="container">
+    <div id="header">
+        <a href="/blog">blog</a>
+        <a href="/api">api</a>
+        <a href="/media">media</a>
+    </div>
+
+    <div id="content">
+        <h1>Mikael Dubik</h1>
+        <h4>Software Engineer</h4>
+        {% load static %}
+        <p id="a"><img src="{% static "portrait.jpeg" %}" alt="Thats me!">This page was created to familiarize myself with frontend development using django 2.0 and document my adventures in programming, data science, lifting, cooking, travelling, among other things.</p>
+        <p id="b">I'm a passionate software developer born and raised in Reykjavík - Iceland with a masters degree in Computer Science. I'm interested in learning something new everyday, meeting new people, jumping into the unknown while having a good time. I will probably never grow up (#tsjú) and if this page doesn't work on your device then go <a href="http://static.flickr.com/87/240803829_9212773615_o.png">buy yourself a real computer </a> and come back again. I encourage sending me an email if you want to get in touch.</p>
+        <p id="c">Skál! and see you somewhere in the world ;)</p>
+    </div>
+
+    <div id="footer">
+        <a href="https://github.com/mkdubik">github</a>
+        {% load static %}
+        <a href="{% static "cv_en.pdf" %}">resume</a>
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#107;&#100;&#117;&#98;&#105;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">email</a>
+    </div>
+</div>
+{% endblock %}

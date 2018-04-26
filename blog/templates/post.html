@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ post.title }} - Mikael Dubik, Software Engineer
+{% endblock %}
+
+{% block style %}
+
+div#content {
+    margin-top: 80px;
+}
+
+
+figure {
+    font-style: italic;
+    text-align: center;
+    font-size: 15px;
+}
+
+{% endblock %}
+
+
+{% block body %}
+
+<div id="container">
+    <div id="header">
+        <a href="/">home</a>
+        <a href="/blog">blog</a>
+        <a href="/api">api</a>
+        <a href="/media">media</a>
+    </div>
+    <div id="content">
+        <h1>{{ post.title }}</h1>
+        <h4>{{ post.created }} </h4>    
+        <div >{{ post.content|safe }}</div>
+        <!--<p>{{ post.like }} people liked this post. </p>-->
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+Blog - Mikael Dubik, Software Engineer
+{% endblock %}
+
+{% block style %}
+
+div#container {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+div#content {
+    margin-top: 80px;
+}
+{% endblock %}
+
+{% block body %}
+<div id="container">
+    <div id="header">
+        <a href="/">home</a>
+        <a href="/api">api</a>
+        <a href="/media">media</a>
+    </div>
+
+    <div id="content">
+        {% if posts %}
+            <ul>
+            {% for p in posts %}
+                {% if p.published %}
+                  <li>
+                    <div class="element">
+                        <a href="/blog/{{p.slug}}/">{{p.title}}</a>
+                        <p>{{ p.created|date:"l, dS F Y G:i" }} </p>
+                    </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Hmmm... there seems to be nothing here.</p>
+        {% endif %}
+        {% endblock %}
+    </div>
+</div>
