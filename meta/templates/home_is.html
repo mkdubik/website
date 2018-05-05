@@ -46,26 +46,19 @@ div#footer a {
 
 {% endblock %}
 {% block body %}
-<div id="container">
-    <div id="header">
-        <a href="/blog">blog</a>
-        <a href="/api">api</a>
-        <a href="/media">media</a>
-    </div>
 
+<div id="container">
     <div id="content">
         <h1>Mikael Dubik</h1>
         <h4>Tölvunarfræðingur</h4>
-        {% load static %}
-        <p id="a"><img src="{% static "portrait.jpeg" %}" alt="Thats me!">Þessi vefsíða var búin til í þeim tilgangi að rifja upp vefforritun með django 2.0 og skrá ævintýrin mín í forritun, gagnagreiningu, lyftingum, eldamennsku, ferðum, o.fl. </p>
-        <p id="b">Ég er fæddur og uppalinn í Vesturbænum, hef mastersgráðu í Tölvunarfræði og er mikill lífskúnstner. Mér finnst gaman að læra eitthvað nýtt, kynnast fólki og stökkva í djúpu laugina (bæði bókstaflega og ekki). Ég mun sennilega aldrei fullorðnast (#tsjú) og ef þessi vefur virkar ekki fyrir þig mæli ég með því að versla betri vélbúnað og reyna aftur. Ég býð uppá að lesa færslurnar mínar <a href="/blog">hér</a> (þær verða á ensku) og skoða <a href="/api">gagnaveituna</a> mína og allskonar <a href="/media">myndir og annað</a>. Endilega skjótið tölvupóst á mig ef þú vilt komast í samband.</p>
-        <p id="c">Skál! og við sjáumst einhversstaðar í heiminum ;)</p>
+        <p id="a"><img src="/static/portrait.jpeg" alt="Þetta er ég!">Ég er háskóla menntaður Tölvunarfræðingur með mastersgráðu, fæddur og uppalinn í Vesturbænum - Reykjavík. Mér finnst gaman að læra eitthvað nýtt, elda, ferðast, kynnast nýju fólki, stökkva í djúpu laugina (bæði bókstaflega og ekki) og ég er mikill lífskúnstner.</p>
+        <p id="b">Þessa dagana er ég að vinna hjá NetApp ehf. sem forritari fyrir qstack kjarnan. Áhugasamir geta sent mér tölvupóst til að komast í samband við mig.</p>
+        <p id="c">Skál! og sjáumst einhversstaðar í heiminum ;)</p>
     </div>
 
     <div id="footer">
         <a href="https://github.com/mkdubik">github</a>
-        {% load static %}
-        <a href="{% fullstatic "cv_is.pdf" %}">ferilskrá</a>
+        <a href="/static/cv_is.pdf">ferilskrá</a>
         <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#107;&#100;&#117;&#98;&#105;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">tölvupóstur</a>
     </div>
 </div>

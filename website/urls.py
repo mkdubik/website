@@ -16,16 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
-from django.conf.urls.static import static
+
+#from django.conf.urls.static import static
 
 from django.conf import settings
-from django.views.generic import TemplateView
+from django.views.decorators.cache import never_cache
+from django.contrib.staticfiles.views import serve as serve_static
 
-#handler404 = 'meta.views.four_zero_four'
 
 
 urlpatterns = [
-    path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('', include('meta.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+
+
+if settings.DEBUG:
+    urlpatterns.append(path(r'^static/(?P<path>.*)$', never_cache(serve_static)))
+
+#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

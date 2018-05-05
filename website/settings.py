@@ -13,9 +13,8 @@ ALLOWED_HOSTS = ['*']
 GEOIP_PATH = BASE_DIR + '/GeoLite2-Country.mmdb'
 
 INSTALLED_APPS = [
-    'blog',
     'meta',
-    'ckeditor',
+    #'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,9 +89,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/'),
-]
 
