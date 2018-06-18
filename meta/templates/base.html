@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    {% load static %}<link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}"/>
+    <link rel="shortcut icon" type="image/png" href="static/favicon.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
         body {
@@ -13,11 +13,14 @@
             max-width: 650px;
             margin: 0 auto;
             padding-top: 80px;
+            padding-bottom: 80px;
         }
-        div#header a {
-            margin: 0 40px 0 0;
+        div#content {
+            padding-top: 40px;
         }
-        {% block style %}{% endblock %}
+
+        {% block style %}
+        {% endblock %}
     </style>
 </head>
 <body>

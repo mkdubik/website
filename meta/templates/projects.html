@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}
+Mikael Dubik, Software Engineer - Projects
+{% endblock %}
+
+{% block style %}
+
+ul {
+  list-style-type: none;
+}
+
+div#element {
+    margin-left: 40px;
+}
+
+a#link {
+    margin-left: 20px;
+}
+
+p#desc {
+    font-style: italic;
+    margin-left: 60px;
+    font-size: 12pt
+}
+
+p#date {
+    font-style: italic;
+    margin-left: 60px;
+    font-size: 11pt
+}
+
+
+{% endblock %}
+
+{% block body %}
+<div id="container">
+    <div id="header">
+        <a href="/">home</a>
+    </div>
+    <div id="content">
+        <ul>
+            {% load static %}
+            {% for p in projects %}
+            <li>
+                <div id="element">
+                    <img src="/static/{{p.slug}}.png"/>
+                        <a id="link" href="/projects/{{p.slug}}/">{{p.title}}</a>
+                        <p id="desc"> {{p.description}} </p>
+                        <p id="date">
+                        {% if p.updated == None %}
+                            Started: {{p.started|date:"M d, Y" }}
+                        {% else %}
+                            Updated: {{p.updated|date:"M d, Y" }}
+                        {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

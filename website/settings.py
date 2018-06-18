@@ -2,8 +2,6 @@ import os
 import os.path
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 SECRET_KEY = os.environ['DJANGO_SECRET']
 
 DEBUG = False
@@ -13,8 +11,9 @@ ALLOWED_HOSTS = ['*']
 GEOIP_PATH = BASE_DIR + '/GeoLite2-Country.mmdb'
 
 INSTALLED_APPS = [
+    'brew',
     'meta',
-    #'ckeditor',
+    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +53,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
-host, user, password, db_name = os.environ['DATABASE'].split(',')
+host, user, password = os.environ['DATABASE'].split(',')
 
 DATABASES = {
     'default': {
@@ -62,7 +61,7 @@ DATABASES = {
         'HOST': host,
         'USER': user,
         'PASSWORD': password,
-        'NAME': db_name,
+        'NAME': 'production',
         'PORT': '',
     }
 }
@@ -88,7 +87,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
+STATIC_ROOT = '/srv/static/'
 
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/'),
+]

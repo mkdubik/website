@@ -14,7 +14,6 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-@log_view
 def selected_post(request, slug):
     #template = loader.get_template('post.html')
     post = Post.objects.get(slug=slug)
