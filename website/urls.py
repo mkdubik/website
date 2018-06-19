@@ -26,6 +26,7 @@ from django.contrib.staticfiles.views import serve as serve_static
 
 
 urlpatterns = [
+    path('projects/brew/', include('brew.urls')),
     path('admin/', admin.site.urls),
     path('', include('meta.urls')),
 ]

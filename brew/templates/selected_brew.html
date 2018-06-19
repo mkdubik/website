@@ -37,18 +37,20 @@ p#date {
     <div id="header">
         <a href="/">home</a>
         <a href="/projects">projects</a>
+        <a href="/projects/brew/">the homebrewing project</a>
     </div>
     <div id="content">
-        <ul>
-            {% for l in logs %}
-            <li>
-                <div id="element">
-                    <a id="link" href="/projects/brew/{{l.slug}}/">{{l.brew_type}}</a>
-                    <p id="date">Yeast added: {{l.yeast_addition|date:"M d, Y" }}</p>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+        <h1>{{ log.brew_type }} - {{ log.yeast_addition }}</h1>
+        <h4>Yeast type: {{ log.yeast }} </h4>
+        <h4>Fruit amount: {{ log.fruit }} kg </h4>
+        <h4>Sugar amount: {{ log.fruit }} kg </h4>
+        <h4>Juice amount: {{ log.fruit }} L </h4>
+        <h4>Water amount: {{ log.fruit }} L </h4>
+        <h4>OG: {{ log.og }} - FG: {{ log.fg }} </h4>
+
+        <div>Preprocessing: </br> {{ log.preprocess|safe }} </div>
+        <div>Processing: </br> {{ log.process|safe }} </div>
+        <div>Extra: </br> {{ log.extra|safe }} </div>
     </div>
 </div>
 {% endblock %}

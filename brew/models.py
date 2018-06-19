@@ -4,6 +4,7 @@ from ckeditor.fields import RichTextField
 
 class Log(models.Model):
     brew_type = models.CharField(max_length=50, blank=False, null=False)
+    slug = models.SlugField()
     yeast = models.CharField(max_length=50, blank=False, null=False)
     yeast_addition = models.DateTimeField(blank=False, null=False)
     fruit = models.DecimalField(max_digits=5, decimal_places=3)
