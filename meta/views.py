@@ -30,11 +30,11 @@ def home(request):
     except Exception as e:
         return render_to_response('home_is.html')
 
+def home_en(request):
+    return render_to_response('home_en.html')
+
 def home_is(request):
     return render_to_response('home_is.html')
-
-def home_en(request):
-    return render_to_response('home.html')
 
 def four_zero_four(request):
     return render_to_response('404.html')

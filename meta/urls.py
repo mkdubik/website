@@ -11,6 +11,3 @@ urlpatterns = [
     path('is/', views.home_is),
     path('', views.home),
 ]
-
-
-
