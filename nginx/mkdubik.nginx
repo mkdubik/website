@@ -1,0 +1,70 @@
+upstream django {
+	server 0.0.0.0:3000; # for a web port socket (we'll use this first)
+}
+
+server {
+	listen 80;
+	server_name mkdubik.com www.mkdubik.com;
+	return 301 https://mkdubik.com$request_uri;
+}
+
+server {
+	listen 80;
+	server_name localhost 192.168.1.33;
+
+	location /static {
+		alias /srv/static; # your Django project's static files - amend as required
+	}
+
+	location / {
+		proxy_redirect     off;
+		include         /etc/nginx/uwsgi_params;
+		uwsgi_pass      django;
+		proxy_set_header   Host              $http_host;
+		proxy_set_header   X-Real-IP         $remote_addr;
+		proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+	}
+}
+
+server {
+	location /admin {
+		allow 127.0.0.1;
+		deny all;
+	}
+
+	location /projects/brew/temperature {
+		allow 127.0.0.1;
+		allow 192.168.1.34;
+		deny all;
+	}
+
+	listen 443 ssl; # managed by Certbot
+	ssl_certificate /etc/letsencrypt/live/mkdubik.com/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/mkdubik.com/privkey.pem; # managed by Certbot
+	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+	server_name mkdubik.com www.mkdubik.com;
+	charset     utf-8;
+
+	# max upload size
+	client_max_body_size 5M;   # adjust to taste
+
+
+	location /static {
+		alias /srv/static; # your Django project's static files - amend as required
+	}
+
+	# Finally, send all non-media requests to the Django server.
+
+	location / {
+		# proxy_redirect     off;
+		include 	/etc/nginx/uwsgi_params;
+		uwsgi_pass	django;
+		proxy_set_header   Host              $http_host;
+		proxy_set_header   X-Real-IP         $remote_addr;
+		proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+	}
+
+}
+

@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 from .models import Log
-from .models import LogEntry
 from django.utils.text import slugify
 
 class LogAdmin(admin.ModelAdmin):
@@ -15,4 +14,3 @@ class LogEntryAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Log, LogAdmin)
-admin.site.register(LogEntry, LogEntryAdmin)

@@ -15,21 +15,10 @@ class Log(models.Model):
     sugar = models.DecimalField(max_digits=5, decimal_places=3)
     juice = models.DecimalField(max_digits=5, decimal_places=3)
     water = models.DecimalField(max_digits=5, decimal_places=3)
-    preprocess = RichTextField(extra_plugins=['image2'])
     process = RichTextField(extra_plugins=['image2'])
     og = models.DecimalField(max_digits=4, decimal_places=3)
     fg = models.DecimalField(max_digits=4, decimal_places=3)
-    extra = RichTextField(extra_plugins=['image2'])
+    label = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return ''.join([self.brew_type,' - ', self.yeast_addition.strftime("%A, %d. %B %Y %I:%M%p")])
-
-class LogEntry(models.Model):
-    log = models.ForeignKey(Log, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True, blank=False, null=False)
-    temperature = models.CharField(max_length=10, blank=False, null=False)
-    sg = models.DecimalField(max_digits=4, decimal_places=3, null=False)
-    extra = RichTextField(extra_plugins=['image2'])
-
-    def __str__(self):
-        return 'Entry ' + self.date.strftime("%A, %d. %B %Y %I:%M%p") + ' at ' + ''.join([self.log.brew_type,' - ', self.log.yeast_addition.strftime("%A, %d. %B %Y %I:%M%p")])

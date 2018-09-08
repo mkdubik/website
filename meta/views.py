@@ -31,7 +31,7 @@ def home(request):
         return render_to_response('home_is.html')
 
 def home_en(request):
-    return render_to_response('home_en.html')
+    return render_to_response('home.html')
 
 def home_is(request):
     return render_to_response('home_is.html')

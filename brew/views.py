@@ -5,15 +5,15 @@ from django.views.decorators.csrf import csrf_exempt
 
 import json
 
-from .models import Log, LogEntry, Temperature
+from .models import Log, Temperature
 
 @csrf_exempt
 def temperature(request):
     if request.method != 'POST':
-        return HttpResponse(status=500)
+        return HttpResponse(status=404)
 
     js = json.loads(request.body)
-    print(js)
+
     t = Temperature(
         timestamp=js['timestamp'],
         temperature=js['temperature'],
