@@ -2,7 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 class Temperature(models.Model):
-    timestamp = models.IntegerField(blank=False, null=False)
+    timestamp = models.DateTimeField(blank=False, null=False)
     temperature = models.IntegerField(blank=False, null=False)
     location = models.CharField(max_length=50, blank=False, null=False)
 

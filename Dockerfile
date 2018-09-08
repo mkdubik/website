@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+# docker run -d -i -e DJANGO_SECRET -e DATABASE --network="host" -t website:latest
+
 RUN adduser --disabled-password --gecos '' mikki
 
 RUN apt-get update && apt-get upgrade -y

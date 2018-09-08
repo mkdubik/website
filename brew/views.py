@@ -3,6 +3,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
+import datetime
 import json
 
 from .models import Log, Temperature
@@ -13,9 +14,8 @@ def temperature(request):
         return HttpResponse(status=404)
 
     js = json.loads(request.body)
-
     t = Temperature(
-        timestamp=js['timestamp'],
+        timestamp=datetime.datetime.strptime(js['timestamp'], '%Y-%m-%dT%H:%M:%S%z'),
         temperature=js['temperature'],
         location=js['location'])
 
